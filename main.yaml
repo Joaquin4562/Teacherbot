@@ -2,6 +2,9 @@
 settings:
     name: Teacherbot
 
+conversations:
+    - 'verbos.yaml'
+
 slots:
     - name
     - verbo
@@ -16,6 +19,8 @@ strategies:
         - say "Dime una palabra y te diré su traducción, pasado y participio"
         - input verbo
         - remember verbo
+        - solve verbos
+        - say datos
     practice:
         - say "Ahora te haré unas preguntas sobre lo que has aprendido"
 
