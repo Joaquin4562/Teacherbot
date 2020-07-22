@@ -3,7 +3,7 @@ settings:
     name: Teacherbot
 
 conversations:
-    - 'verbos.yaml'
+    - 'conv_verbo.yaml'
 
 slots:
     - name
@@ -17,13 +17,19 @@ strategies:
         - say "mucho gusto en conocerte"
     study:
         - say "Dime una palabra y te diré su traducción, pasado y participio"
-        - input verbo
-        - remember verbo
-        - solve verbos
+        - input verbo | asign exit:finish
+        - if verbo == "finish" then solve exit
+        - add_slot verbos
+        - set_slot verbos []
+        - execute self.slots['verbos'].append(verbo)
+        - remember verbos
+        - solve conv_verbo
         - say datos
         - solve study
     practice:
         - say "Ahora te haré unas preguntas sobre lo que has aprendido"
+    exit:
+        - say "Un gusto platicar contigo {}".format(name)
 
 script:
     - solve name

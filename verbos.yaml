@@ -1,7 +1,0 @@
-# conversation
-
-plugins:
-    - verbos
-
-script:
-    - verbos.buscar(verbo)

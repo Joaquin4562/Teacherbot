@@ -1,0 +1,7 @@
+# conversation
+
+plugins:
+    - buscar_verbos
+
+script:
+    - buscar_verbos.buscar(verbo)
