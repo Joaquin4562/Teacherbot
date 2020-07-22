@@ -21,6 +21,7 @@ strategies:
         - remember verbo
         - solve verbos
         - say datos
+        - solve study
     practice:
         - say "Ahora te haré unas preguntas sobre lo que has aprendido"
 

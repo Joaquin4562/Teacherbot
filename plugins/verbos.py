@@ -14,6 +14,6 @@ def buscar(verb):
             participio = sheet.cell_value(i,2)
             return 'set_slot {0} "traducción {1}, pasado {2}, participio {3}"'.format(var, traduccion, pasado, participio)
 
-    return 'set_slot datos "No se encontro la palabra"'
+    return 'set_slot datos "Lo siento, aun no entiendo esa palabra"'
 
 
