@@ -1,0 +1,7 @@
+# conversation
+
+plugins:
+    - verificar_respuesta
+
+script:
+    - verificar_respuesta.verificarRespuesta(preguntas[1], preguntas[0], respuesta)

@@ -1,0 +1,7 @@
+# conversation
+
+plugins:
+    - generar_pregunta
+
+script:
+    - generar_pregunta.generarPregunta()

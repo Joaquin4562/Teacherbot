@@ -4,10 +4,13 @@ settings:
 
 conversations:
     - 'conv_verbo.yaml'
+    - 'conv_pregunta.yaml'
+    - 'conv_respuesta.yaml'
 
 slots:
     - name
     - verbo
+    - respuesta
 
 strategies:
     name:
@@ -20,22 +23,24 @@ strategies:
         - input verbo
         - remember verbo
         - if verbo == "exit" then solve exit
-        - say verbo
-        - execute self.slots['verbos'].append(verbo)
-        - remember verbos
         - solve conv_verbo
         - say datos
         - solve study
     practice:
         - say "Ahora te haré unas preguntas sobre lo que has aprendido"
+        - solve conv_pregunta
+        - say preguntas[2]
+        - input respuesta
+        - remember respuesta 
+        - if respuesta == "exit" then solve exit
+        - solve conv_respuesta
+        - solve practice
     exit:
         - say "Un gusto platicar contigo {}".format(name)
         - exit
 
 script:
-    - loop_slots
-    - add_slot verbos
-    - set_slot verbos []
+    - solve name
     - say "¿Que quieres hacer {}?, ¿estudiar o practicar?".format(name)
     - input status | asign estudiar:study practicar:practice
     - if status == "study" then solve study
