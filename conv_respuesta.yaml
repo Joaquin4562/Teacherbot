@@ -4,4 +4,8 @@ plugins:
     - verificar_respuesta
 
 script:
+    - add_slot cont_correcto
+    - set_slot cont_correcto 0
+    - add_slot cont_incorrecto
+    - set_slot cont_incorrecto 0
     - verificar_respuesta.verificarRespuesta(preguntas[1], preguntas[0], respuesta)

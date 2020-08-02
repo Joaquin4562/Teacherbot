@@ -22,7 +22,7 @@ strategies:
         - say "Dime una palabra y te diré su traducción, pasado y participio"
         - input verbo
         - remember verbo
-        - if verbo == "exit" then solve exit
+        - if verbo == "exit" then solve intermedio
         - solve conv_verbo
         - say datos
         - solve study
@@ -32,16 +32,22 @@ strategies:
         - say preguntas[2]
         - input respuesta
         - remember respuesta 
-        - if respuesta == "exit" then solve exit
+        - if respuesta == "exit" then solve intermedio
         - solve conv_respuesta
+        - say "llevas correctas {0} e incorrectas {1}".format(cont_correcto, cont_incorrecto)
         - solve practice
     exit:
         - say "Un gusto platicar contigo {}".format(name)
         - exit
+    intermedio:
+        - say "¿Que quieres hacer {}?, ¿estudiar o practicar?".format(name)
+        - input status | asign estudiar:study practicar:practice nada:exit
+        - if status == "study" then solve study
+        - if status == "practice" then solve practice
+        - if status == "exit" then solve exit
+        - exit
+        
 
 script:
-    - solve name
-    - say "¿Que quieres hacer {}?, ¿estudiar o practicar?".format(name)
-    - input status | asign estudiar:study practicar:practice
-    - if status == "study" then solve study
-    - if status == "practice" then solve practice
+    - loop_slots
+    - solve intermedio
