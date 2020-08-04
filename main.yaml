@@ -49,5 +49,9 @@ strategies:
         
 
 script:
+    - add_slot cont_correcto
+    - set_slot cont_correcto 0
+    - add_slot cont_incorrecto
+    - set_slot cont_incorrecto 0
     - loop_slots
     - solve intermedio
