@@ -2,7 +2,13 @@
 
 plugins:
     - verificar_respuesta
-
+strategies:
+    resCorrecta:
+        - say "Respuesta correcta"
+        - execute self.slots['cont_correcto']+=1
+    resIncorrecta:
+        - say "Respuesta incorrecta"
+        - execute self.slots['cont_incorrecto']+=1
 script:
     - add_slot cont_correcto
     - set_slot cont_correcto 0

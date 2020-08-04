@@ -10,8 +10,8 @@ def verificarRespuesta(verb, pregunta, respuesta):
         if(valor == verb):
             respuestaCorrecta = sheet.cell_value(i, int(pregunta))
             if respuestaCorrecta == respuesta:
-                return "execute self.slots['cont_correcto']+=1"
+                return "solve resCorrecta"
             else:
-                return "execute self.slots['cont_incorrecto']+=1"
+                return "solve resIncorrecta"
         
     return 'say "No se entendio tu respuesta"'
